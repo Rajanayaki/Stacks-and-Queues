@@ -1,0 +1,30 @@
+class queue:
+  def __init__(self):
+    self.s1=[]
+    self.s2=[]
+  def enqueue(self,element):
+    while len(self.s1)!=0:
+      self.s2.append(self.s1[-1])
+      self.s1.pop() 
+    self.s1.append(element)
+    while len(self.s2)!=0:
+      self.s1.append(self.s2[-1])
+      self.s2.pop() 
+  def dequeue(self):
+    if len(self.s1)==0:
+      print("Empty")
+    else:
+      print(self.s1[-1])
+      self.s1.pop() 
+  def printqueue(self):
+    print(*self.s1)
+  
+q=queue()
+n=int(input())
+lst=list(input().split())
+for i in range(n):
+  q.enqueue(lst[i])
+q.printqueue()
+while n:
+  q.dequeue()
+  n-=1
